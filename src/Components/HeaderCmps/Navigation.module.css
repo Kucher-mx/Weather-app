@@ -1,0 +1,41 @@
+.Link {
+    color: #D8D9D7;
+    font-size: 18px;
+    letter-spacing: .5px;
+    transition: color .3s ease-in;
+    font-weight: 300;
+}
+
+.Link:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.List {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.List li {
+    margin: 0 15px;
+}
+
+.Input {
+    padding: 5px;
+    width: 270px;
+    height: 35px;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #E5E5E8;
+    border: 2px solid #363738;
+}
+
+.Input:focus {
+    outline: none;
+}
+

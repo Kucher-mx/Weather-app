@@ -1,0 +1,18 @@
+.Header {
+    height: 120px;
+    background-color: #2D3540;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    color: #FFFFFF;
+    font-size: 40px;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.logo:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}

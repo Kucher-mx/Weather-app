@@ -1,0 +1,49 @@
+.Main {
+    box-sizing: border-box;
+    padding: 25px;
+    padding-left: 35px;
+    margin-top: 25px;
+    border-radius: 5px;
+    background-color: #72DDDA;
+    height: fit-content;
+    position: relative;
+}
+
+.BText {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.MText {
+    font-size: 18px;
+    font-weight: 300;
+    /* margin-top: 5px; */
+}
+
+.Temperature {
+    padding-left: 7px;
+    font-weight: bold;
+    font-size: 118px;
+    line-height: 150px;
+}
+
+.WeatherTypePic {
+    position: absolute;
+    top: 50%;
+    right: 75px;
+    transform: translateY(-50%);
+}
+
+.Picture {
+    width: 200px;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 25px;
+}
+
+.TempM {
+    padding-right: 15px;
+    text-align: right;
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 3px;
+}
