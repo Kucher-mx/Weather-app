@@ -5,17 +5,20 @@ import { weatherContext } from '../../Context/weatherContext/weatherContext';
 
 
 const NavInput = () => {
-    const {setValue} = useContext(InputContext);
+    const {inputState, setValue, clearValue} = useContext(InputContext);
     const {getWeatherByCity} = useContext(weatherContext);
     return (
         <form onSubmit={(e) => {
             e.preventDefault();
-            getWeatherByCity()
+            getWeatherByCity();
+            clearValue();
+            console.log(e);
             }}>
             <input text="text" 
             placeholder="Enter your city" 
             className={classes.Input} 
             onChange={(e) => setValue(e.target.value)}
+            value={inputState.inputValue}
             />
         </form>
     )

@@ -14,8 +14,15 @@ const Page = () => {
     const {coordsState, setCoords} = useContext(CoordsContext);
     const {themeState} = useContext(ThemeContext);
     let color = '#F1F1F1';
+    let yourCityStyle = {
+        textAlign: 'center',
+        color: '#2D3540',
+        textTransform: 'uppercase',
+        marginTop: '10px',
+    }
     if(themeState.themeEnabled){
         color = '#2D3540';
+        yourCityStyle.color = '#F1F1F1';
     }
     // console.log('context',useContext(CoordsContext))
     console.log(state);
@@ -48,6 +55,7 @@ const Page = () => {
                         min={state.min} 
                         max={state.max} 
                         place={state.timeZone}/>
+                    <div style={yourCityStyle}>Weather in your city</div>
                     <CardBlocks 
                         days={[
                             state.daily[1],

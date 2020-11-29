@@ -5,7 +5,7 @@ const inputReducer = (state, action) => {
         case SET_INPUT: 
             return {...state, inputValue: action.payload};
         case CLEAR_INPUT:
-            return {...state, inputValue: null};
+            return {...state, inputValue: ''};
         default:
             return state;
     }

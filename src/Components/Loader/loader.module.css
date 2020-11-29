@@ -1,7 +1,7 @@
 .LWrapper {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +12,7 @@
     vertical-align: middle;
     position: relative;
     display: flex;
-    padding: 150px;
+    padding: 300px;
   }
   
   .loader span {
