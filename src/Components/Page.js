@@ -5,14 +5,19 @@ import CardBlocks from './CardBlocks';
 import Footer from './Footer/Footer';
 import {weatherContext} from '../Context/weatherContext/weatherContext';
 import Loader from './Loader/loader';
+import { CoordsContext } from '../Context/coordsContext/CoordsContext';
 
 const Page = () => {
     const API_Key = '9cb8f2750fe354ef6c28a6a0ed376d27';
     const {getWeather, state, setLoading} = useContext(weatherContext);
-    
+    const {coordsState, setCoords} = useContext(CoordsContext);
+    // console.log('context',useContext(CoordsContext))
+    console.log(state);
     useEffect(() => {
         setLoading();
         navigator.geolocation.getCurrentPosition(function(position) {
+            setCoords(position.coords.longitude, position.coords.latitude);
+            console.log(coordsState);
             const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
             getWeather(link);
         });
@@ -26,19 +31,23 @@ const Page = () => {
             height: '100vh',
             position: 'relative',
         }}>
-            <Header />
+            <Header/>
             { state.loading ? <Loader /> : 
                 <>
-                    <MainContent current={state.current.current} 
-                    min={state.current.daily[0].temp.min.toFixed(1)} 
-                    max={state.current.daily[0].temp.max.toFixed(1)} 
-                    place={state.current.timezone}/>
+                    <MainContent 
+                        current={state.current} 
+                        min={state.min} 
+                        max={state.max} 
+                        place={state.timeZone}/>
                     <CardBlocks 
-                    morning={state.current.daily[0].temp.morn}
-                    day={state.current.daily[0].temp.day}
-                    evening={state.current.daily[0].temp.eve}
-                    night={state.current.daily[0].temp.night}
-                    tomorrow={state.current.daily[1].temp.day}/>
+                        days={[
+                            state.daily[1],
+                            state.daily[2],
+                            state.daily[3],
+                            state.daily[4],
+                            state.daily[5]
+                        ]}
+                    />
                 </>
             }
             

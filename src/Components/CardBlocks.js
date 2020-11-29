@@ -1,21 +1,30 @@
 import React from 'react';
 import Card from './Card/Card';
+// import {weatherContext} from '../Context/weatherContext/weatherContext';
 import classes from './Styles/CardBlocks.module.css';
 
-const CardBlocks = ({day, morning, evening, night, tomorrow}) => {
-    const cards = [
-        {dayTime: 'Morning', temp: morning, url: 'https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png'},
-        {dayTime: 'Day', temp: day, url: 'https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png'},
-        {dayTime: 'Evening', temp: evening, url: 'https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png'},
-        {dayTime: 'Night', temp: night, url: 'https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png'},
-        {dayTime: 'Tomorrow', temp: tomorrow, url: 'https://icons-for-free.com/iconfiles/png/512/cloud+day+forecast+lightning+shine+storm+sun+weather+icon-1320183295537909806.png'},
-    ], cls = [classes.CardBlocks, 'container'];
+
+const CardBlocks = ({days}) => {
+    console.log(days)
+    const arr = ['Sunday', 'Monday', 'Tuesday', 'Wensday', 'Thursday', 'Friday', 'Saturday'];
+
+    let cards = [], cls = [classes.CardBlocks, 'container'];
+    days.forEach((day, idx) => {
+        const date = new Date(day.dt * 1000);
+        let dayInfo = {
+            dayTime: `${arr[date.getDay()]} ${date.getDate()}.${date.getMonth()}`,
+            temp: day.temp.day,
+            url: `pic${day.weather[0].icon.slice(0, -1)}`,
+        }
+        cards.push(dayInfo);
+    });
+
 
     const renderCards = (cardsArr) => {
         return cardsArr.map((card, idx) => {
             return (
                 <li key={idx}>
-                    <Card dayTime={card.dayTime} temp={card.temp.toFixed(1)} url={card.url}/>
+                    <Card dayTime={card.dayTime} temp={card.temp.toFixed(1)} url={card.url} id={idx+1}/>
                 </li>
             )
         })
