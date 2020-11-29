@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from './Styles/MainContent.module.css';
 import pictures from './icons/icons';
+import { ThemeContext } from '../Context/themeContext/themeContext';
 
 const MainContent = ({current, min ,max, place}) => {
-    
+
     const date = new Date();
     const cls = [classes.Main, 'container'];
+    const {themeState} = useContext(ThemeContext);
     const picId = current.weather[0].icon.slice(0, -1);
     const hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
     const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
     const seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+    if(themeState.themeEnabled){
+        cls.push(classes.Dark);
+    }
 
     return (
         <div className={cls.join(' ')}>

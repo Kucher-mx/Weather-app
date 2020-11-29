@@ -4,9 +4,15 @@
     padding-left: 35px;
     margin-top: 25px;
     border-radius: 5px;
-    background-color: #72DDDA;
+    /* background-color: #7EDEFF; */
+    background-color: #FDFBE4;;
     height: fit-content;
     position: relative;
+    transition: .3s all ease-in;
+}
+
+.Dark {
+    background-color: #BBF8FF;
 }
 
 .BText {
@@ -36,7 +42,7 @@
 
 .Picture {
     width: 200px;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .7);
     border-radius: 25px;
 }
 

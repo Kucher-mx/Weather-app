@@ -6,11 +6,17 @@ import Footer from './Footer/Footer';
 import {weatherContext} from '../Context/weatherContext/weatherContext';
 import Loader from './Loader/loader';
 import { CoordsContext } from '../Context/coordsContext/CoordsContext';
+import { ThemeContext } from '../Context/themeContext/themeContext';
 
 const Page = () => {
     const API_Key = '9cb8f2750fe354ef6c28a6a0ed376d27';
     const {getWeather, state, setLoading} = useContext(weatherContext);
     const {coordsState, setCoords} = useContext(CoordsContext);
+    const {themeState} = useContext(ThemeContext);
+    let color = '#F1F1F1';
+    if(themeState.themeEnabled){
+        color = '#2D3540';
+    }
     // console.log('context',useContext(CoordsContext))
     console.log(state);
     useEffect(() => {
@@ -25,11 +31,14 @@ const Page = () => {
         // eslint-disable-next-line
     }, []);
     
+
+    
     return (
         <div style={{
-            backgroundColor: '#C8EBFF',
+            backgroundColor: color,
             height: '100vh',
             position: 'relative',
+            transition: '.3s all ease-in'
         }}>
             <Header/>
             { state.loading ? <Loader /> : 

@@ -1,14 +1,23 @@
 .Link {
-    color: #D8D9D7;
+    /* color: #D8D9D7; */
+    color: #2D3540;
     font-size: 18px;
     letter-spacing: .5px;
     transition: color .3s ease-in;
     font-weight: 300;
 }
 
+.Dark {
+    color: #F1F1F1;
+}
+
 .Link:hover {
-    color: #ffffff;
+    color: #F1F1F1;
     text-decoration: none;
+}
+
+.Dark:hover {
+    color: #2D3540;
 }
 
 .List {

@@ -1,18 +1,28 @@
 .Header {
     height: 120px;
-    background-color: #2D3540;
+    background-color: #F1F1F1;
+    color: #2D3540;
     position: relative;
     font-family: 'Roboto', sans-serif;
+    transition: .3s all ease-in;
+}
+
+.Dark {
+    background-color: #2D3540;
+}
+
+.Dark .logo{
+    color: #FEFFFD;
 }
 
 .logo {
-    color: #FFFFFF;
+    color: #2D3540;
     font-size: 40px;
     letter-spacing: 4px;
     font-weight: 700;
 }
 
 .logo:hover {
-    color: #FFFFFF;
+    color: #2D3540;
     text-decoration: none;
 }
