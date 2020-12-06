@@ -1,0 +1,63 @@
+.Card {
+    position: relative;
+    border-radius: 5px;
+    width: 500px;
+    height: 120px;
+    border: 1px solid #000;
+    background-color: #FFF9D5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 5px;
+    box-sizing: border-box;
+    transition: .3s all ease-in;
+    margin-top: 10px;
+}
+
+.Card_Place {
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+.Card_Body {
+    padding: 10px;
+}
+
+.Min {
+    font-size: 14px;
+    display: inline;
+}
+
+.Max {
+    font-size: 14px;
+    display: inline;
+}
+
+.Dark {
+    background-color: #CADEFC;
+}
+
+.Card img {
+    position: absolute;
+    right: 25px;
+    display: block;
+    width: 80px;
+    margin-bottom: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.CardBlocks {
+    /* display: none; */
+}
+
+.CardBlocks ul {
+    padding: 0;
+    margin: 25px auto;
+    list-style-type: none;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 500px 500px;
+    gap: 20px;
+}

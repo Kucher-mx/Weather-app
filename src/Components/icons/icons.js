@@ -9,9 +9,10 @@ import pic13 from './pic13.png';
 import pic50 from './pic50.png';
 import light from './light.png';
 import dark from './dark.png';
+import error from './error.png';
 
 const pictures = {
-    pic01, pic02, pic03, pic04, pic09, pic10, pic11, pic13, pic50, dark, light
+    pic01, pic02, pic03, pic04, pic09, pic10, pic11, pic13, pic50, dark, light, error
 }
 
 export default pictures;

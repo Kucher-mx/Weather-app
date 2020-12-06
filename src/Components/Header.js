@@ -7,8 +7,7 @@ import {weatherContext} from '../Context/weatherContext/weatherContext';
 import { ThemeContext } from '../Context/themeContext/themeContext';
 
 const Header = (link) => {
-    // console.log(classes);
-    const {getWeather} = useContext(weatherContext);
+    const {clearWeather, getWeather} = useContext(weatherContext);
     const {themeState} = useContext(ThemeContext);
     const cls = [classes.Header, 'navbar navbar-expand-lg'];
     if(themeState.themeEnabled){
@@ -17,7 +16,10 @@ const Header = (link) => {
     return (
         <nav className={cls.join(' ')}>
             <div className='container'>
-                <Link className={classes.logo} href="/" to="/" onClick={() => getWeather(link)}>Weather-App</Link>
+                <Link className={classes.logo} href="/" to="/" onClick={() => {
+                    clearWeather();
+                    getWeather(link);
+                    }}>Weather-App</Link>
                 <NavLinks />
                 <NavInput />
             </div>

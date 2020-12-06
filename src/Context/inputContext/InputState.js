@@ -1,11 +1,11 @@
-import {useReducer, useContext} from 'react';
+import {useReducer} from 'react';
 import { SET_INPUT, CLEAR_INPUT } from '../actionTypes';
 import {InputContext} from './InputContext';
 import inputReducer from './InputReducer';
 
 const InputState = ({children}) => {
     const initialState ={
-        inputValue: null,
+        inputValue: '',
     }
     const [inputState, dispatch] = useReducer(inputReducer, initialState);
 

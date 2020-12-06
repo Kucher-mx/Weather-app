@@ -1,4 +1,12 @@
-import { GET_WEATHER, SET_LOADING, CHANGE_DAY, GET_WEATHER_BY_CITY, CLEAR_WEATHER } from "../actionTypes";
+import { 
+    GET_WEATHER, 
+    SET_LOADING, 
+    CHANGE_DAY, 
+    GET_WEATHER_BY_CITY, 
+    CLEAR_WEATHER, 
+    IS_ERROR, 
+    IS_NO_ERROR 
+} from "../actionTypes";
 
 const weatherReducer = (state, action) => {
     switch(action.type){
@@ -26,10 +34,14 @@ const weatherReducer = (state, action) => {
                 timeZone: action.payload.timeZone};
         case SET_LOADING:
             return {...state, loading: true};
+        case IS_ERROR:
+            return {...state, isError: true, loading: false};
+        case IS_NO_ERROR:
+            return {...state, isError: false};
         case CLEAR_WEATHER:
             return {
                 cards: [], current: {}, daily: [], timeZone: null, loading: true,
-                min: null,  max: null
+                min: null,  max: null, isError: false
             }
         default:
             return state;

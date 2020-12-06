@@ -2,7 +2,7 @@ import {useReducer, useContext} from 'react';
 import weatherReducer from './weatherReducer';
 import {weatherContext} from './weatherContext';
 import axios from 'axios';
-import {GET_WEATHER, SET_LOADING, CHANGE_DAY, GET_WEATHER_BY_CITY} from '../actionTypes';
+import {GET_WEATHER, SET_LOADING, CHANGE_DAY, GET_WEATHER_BY_CITY, IS_ERROR, CLEAR_WEATHER} from '../actionTypes';
 import { CoordsContext } from '../coordsContext/CoordsContext';
 import { InputContext } from '../inputContext/InputContext';
 
@@ -14,7 +14,8 @@ const WeatherState = ({children}) => {
         timeZone: null,
         loading: true,
         min: null,
-        max: null
+        max: null,
+        isError: false,
     };
     const [state, dispatch] = useReducer(weatherReducer, initialState);
     const {coordsState} = useContext(CoordsContext);
@@ -28,7 +29,7 @@ const WeatherState = ({children}) => {
             const res = await axios.get(coordsState.lon && coordsState.lat ? url : link);
             dispatch({type: GET_WEATHER, payload: res.data})
           } catch (e){
-            console.log(e);
+            dispatch({type: IS_ERROR});
           }
     }
 
@@ -49,7 +50,7 @@ const WeatherState = ({children}) => {
             }
             dispatch({type: GET_WEATHER_BY_CITY, payload: cityWeather})
           } catch (e){
-            console.log(e);
+            dispatch({type: IS_ERROR});
           }
     }
 
@@ -57,8 +58,11 @@ const WeatherState = ({children}) => {
         dispatch({type: SET_LOADING});
     }
 
+    const clearWeather = () => {
+        dispatch({type: CLEAR_WEATHER});
+    }
+
     const changeDay = (idx) => {
-        console.log(state);
         const newDay = {
             ...state.daily[idx],
             temp: state.daily[idx].temp.day,
@@ -71,7 +75,7 @@ const WeatherState = ({children}) => {
 
     return (
         <weatherContext.Provider value={{
-            state, getWeather, setLoading, changeDay, getWeatherByCity
+            state, getWeather, setLoading, changeDay, getWeatherByCity, clearWeather
         }}>
             {children}
         </weatherContext.Provider>

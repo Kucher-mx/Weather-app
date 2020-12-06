@@ -5,13 +5,14 @@ import CardBlocks from './CardBlocks';
 import Footer from './Footer/Footer';
 import {weatherContext} from '../Context/weatherContext/weatherContext';
 import Loader from './Loader/loader';
+import Error from './Error/Error';
 import { CoordsContext } from '../Context/coordsContext/CoordsContext';
 import { ThemeContext } from '../Context/themeContext/themeContext';
 
 const Page = () => {
     const API_Key = '9cb8f2750fe354ef6c28a6a0ed376d27';
     const {getWeather, state, setLoading} = useContext(weatherContext);
-    const {coordsState, setCoords} = useContext(CoordsContext);
+    const {setCoords} = useContext(CoordsContext);
     const {themeState} = useContext(ThemeContext);
     let color = '#F1F1F1';
     let yourCityStyle = {
@@ -24,17 +25,23 @@ const Page = () => {
         color = '#2D3540';
         yourCityStyle.color = '#F1F1F1';
     }
-    // console.log('context',useContext(CoordsContext))
     console.log(state);
     useEffect(() => {
+        const lat = '50.43';
+        const lon = '30.51';
+        const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
         setLoading();
-        navigator.geolocation.getCurrentPosition(function(position) {
-            setCoords(position.coords.longitude, position.coords.latitude);
-            console.log(coordsState);
-            const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
-            getWeather(link);
-        });
-       
+        getWeather(link);
+        console.log('use Eff', state);
+        setCoords(lon, lat);
+            // get user's coords func, not working((
+        // navigator.geolocation.getCurrentPosition(function(position) {
+        //     console.log('use Eff');
+        //     setCoords(position.coords.longitude, position.coords.latitude);
+        //     const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
+        //     getWeather(link);
+        //     console.log('use Eff', state);
+        //   });
         // eslint-disable-next-line
     }, []);
     
@@ -48,7 +55,7 @@ const Page = () => {
             transition: '.3s all ease-in'
         }}>
             <Header/>
-            { state.loading ? <Loader /> : 
+            { state.loading ? <Loader /> : state.isError ? <Error /> : 
                 <>
                     <MainContent 
                         current={state.current} 
