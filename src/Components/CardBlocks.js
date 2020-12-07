@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './Card/Card';
-// import {weatherContext} from '../Context/weatherContext/weatherContext';
 import classes from './Styles/CardBlocks.module.css';
 
 
@@ -9,7 +8,7 @@ const CardBlocks = ({days}) => {
     const arr = ['Sunday', 'Monday', 'Tuesday', 'Wensday', 'Thursday', 'Friday', 'Saturday'];
 
     let cards = [], cls = [classes.CardBlocks, 'container'];
-    days.forEach((day, idx) => {
+    days.forEach((day) => {
         const date = new Date(day.dt * 1000);
         let dayInfo = {
             dayTime: `${arr[date.getDay()]} ${date.getDate()}.${date.getMonth()}`,

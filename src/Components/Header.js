@@ -19,7 +19,7 @@ const Header = (link) => {
                 <Link className={classes.logo} href="/" to="/" onClick={() => {
                     clearWeather();
                     getWeather(link);
-                    }}>Weather-App</Link>
+                }}>Weather-App</Link>
                 <NavLinks />
                 <NavInput />
             </div>

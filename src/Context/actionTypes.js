@@ -4,7 +4,6 @@ export const CHANGE_DAY = 'CHANGE_DAY';
 export const CLEAR_WEATHER = 'CLEAR_WEATHER';
 export const SET_LOADING = 'SET_LOADING';
 export const IS_ERROR = 'IS_ERROR';
-export const IS_NO_ERROR = 'IS_ERROR';
 
 export const SET_COORDS = 'SET_COORDS';
 export const CLEAR_COORDS = 'CLEAR_COORDS';

@@ -32,15 +32,17 @@ const NavLinks = () => {
                             className={cls.join(' ')}
                             onClick={(e) => {
                                 toggleTheme();
-                            }}><img src={link.text} 
-                            style={{
-                                width: '25px',
-                                backgroundColor: '#f1f1f1',
-                                borderRadius: '5px',
-                                padding: '3px',
-                                boxSizing: 'border-box',
-                            }} 
-                            alt='nav icon' /></NavLink>
+                            }}>
+                                <img src={link.text} 
+                                style={{
+                                    width: '25px',
+                                    backgroundColor: '#f1f1f1',
+                                    borderRadius: '5px',
+                                    padding: '3px',
+                                    boxSizing: 'border-box',
+                                }} 
+                                alt='nav icon' />
+                            </NavLink>
                         </li> 
                     )
                 } 

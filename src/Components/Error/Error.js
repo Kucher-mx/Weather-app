@@ -9,7 +9,7 @@ const Error = () => {
             <h1 style={{
                 color: !themeState.themeEnabled ? '#2D3540' : '#F1F1F1',
             }}>
-                Oops, it's an error there :(
+                Oops, it's an error there, try to refresh the page :(
             </h1>
         </div>
     )

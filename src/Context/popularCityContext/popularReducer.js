@@ -5,7 +5,7 @@ export const popularReducer = (state, action) => {
         case ADD_CITY: 
             return {...state, cities: action.payload};
         case REMOVE_CITY: 
-            return {...state, cities: action.payload};
+            return {...state, cities: []};
         default:
             return state;
     }

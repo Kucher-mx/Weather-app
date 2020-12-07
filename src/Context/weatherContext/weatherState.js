@@ -21,16 +21,16 @@ const WeatherState = ({children}) => {
     const {coordsState} = useContext(CoordsContext);
     const {inputState} = useContext(InputContext);
 
-    const getWeather = async (link) => {
+    const getWeather = async (link, city = 'Your city') => {
         dispatch({type: SET_LOADING});
         try{
             const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordsState.lat}&lon=${coordsState.lon}&units=metric&exclude=alerts,minutely&appid=${coordsState.api_key}`;
             
             const res = await axios.get(coordsState.lon && coordsState.lat ? url : link);
-            dispatch({type: GET_WEATHER, payload: res.data})
-          } catch (e){
+            dispatch({type: GET_WEATHER, payload: res.data, city})
+        } catch (e){
             dispatch({type: IS_ERROR});
-          }
+        }
     }
 
     const getWeatherByCity = async () => {
@@ -68,7 +68,7 @@ const WeatherState = ({children}) => {
             temp: state.daily[idx].temp.day,
             min: state.daily[idx].temp.min.toFixed(1),
             max: state.daily[idx].temp.max.toFixed(1),
-            timeZone: 'In your city',
+            timeZone: 'Your city',
         }
         dispatch({type: CHANGE_DAY, payload: newDay})
     }

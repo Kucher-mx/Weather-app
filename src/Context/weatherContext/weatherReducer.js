@@ -4,8 +4,7 @@ import {
     CHANGE_DAY, 
     GET_WEATHER_BY_CITY, 
     CLEAR_WEATHER, 
-    IS_ERROR, 
-    IS_NO_ERROR 
+    IS_ERROR
 } from "../actionTypes";
 
 const weatherReducer = (state, action) => {
@@ -14,7 +13,7 @@ const weatherReducer = (state, action) => {
             return {...state, 
                 current: action.payload.current, 
                 daily: action.payload.daily, 
-                timeZone: action.payload.timezone, 
+                timeZone: action.city, 
                 loading: false,
                 min: action.payload.daily[0].temp.min.toFixed(1),
                 max: action.payload.daily[0].temp.max.toFixed(1)};
@@ -36,8 +35,6 @@ const weatherReducer = (state, action) => {
             return {...state, loading: true};
         case IS_ERROR:
             return {...state, isError: true, loading: false};
-        case IS_NO_ERROR:
-            return {...state, isError: false};
         case CLEAR_WEATHER:
             return {
                 cards: [], current: {}, daily: [], timeZone: null, loading: true,

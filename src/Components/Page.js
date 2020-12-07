@@ -25,27 +25,23 @@ const Page = () => {
         color = '#2D3540';
         yourCityStyle.color = '#F1F1F1';
     }
-    console.log(state);
     useEffect(() => {
-        const lat = '50.43';
-        const lon = '30.51';
-        const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
         setLoading();
-        getWeather(link);
-        console.log('use Eff', state);
-        setCoords(lon, lat);
-            // get user's coords func, not working((
-        // navigator.geolocation.getCurrentPosition(function(position) {
-        //     console.log('use Eff');
-        //     setCoords(position.coords.longitude, position.coords.latitude);
-        //     const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
-        //     getWeather(link);
-        //     console.log('use Eff', state);
-        //   });
+        if(Object.keys(navigator.geolocation).length !== 0){
+            navigator.geolocation.getCurrentPosition(function(position) {
+                setCoords(position.coords.longitude, position.coords.latitude);
+                const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
+                getWeather(link);
+              });
+        } else {
+            const lat = '50.43';
+            const lon = '30.51';
+            const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
+             getWeather(link, 'UA Kiev');
+            setCoords(lon, lat);
+        }
         // eslint-disable-next-line
     }, []);
-    
-
     
     return (
         <div style={{

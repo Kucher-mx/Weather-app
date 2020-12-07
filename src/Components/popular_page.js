@@ -1,10 +1,9 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import Header from './Header';
 import MainContent from './MainContent';
 import Footer from './Footer/Footer';
 import { ThemeContext } from '../Context/themeContext/themeContext';
 import {weatherContext} from '../Context/weatherContext/weatherContext';
-import Loader from './Loader/loader';
 import Error from './Error/Error';
 import { PopularContext } from '../Context/popularCityContext/popularContext';
 

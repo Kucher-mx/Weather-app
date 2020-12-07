@@ -23,7 +23,6 @@ const MainContent = ({current, min ,max, place}) => {
                 <div className={classes.Temperature}>{current.temp.toFixed(1)}°</div>
                 <div className={classes.BText}>{current.weather[0].main}</div>
                 <div className={classes.MText}>Humidity: {current.humidity}%</div>
-                
                 <div className={classes.WeatherTypePic}>
                     <img className={classes.Picture} src={pictures[`pic${picId}`]} alt="Weater Type"/>
                     <div className={classes.TempM}>Min: {min}°| Max: {max}°</div>

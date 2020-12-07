@@ -13,7 +13,7 @@ const PopularCardBlocks = ({cities}) => {
             const city = cities[cityName];
             return (
                 <li key={idx}>
-                    <PopularCard current={city.current} min={city.min} max={city.max} place={city.place} id={idx+1}/>
+                    <PopularCard current={city.current} place={city.place} id={idx+1}/>
                 </li>
             )
         })

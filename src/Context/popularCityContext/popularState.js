@@ -6,6 +6,7 @@ import axios from 'axios';
 import { CoordsContext } from '../coordsContext/CoordsContext';
 const PopularState = ({children}) => {
     const cities = [
+        // we can get it from remate server, or even from localStorage
         {name: 'London'},
         {name: 'Kyiv'},
         {name: 'Vinnytsia'},
