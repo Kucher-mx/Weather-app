@@ -27,19 +27,19 @@ const Page = () => {
     }
     useEffect(() => {
         setLoading();
-        if(Object.keys(navigator.geolocation).length !== 0){
+        // if(Object.keys(navigator.geolocation).length !== 0){
             navigator.geolocation.getCurrentPosition(function(position) {
                 setCoords(position.coords.longitude, position.coords.latitude);
                 const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
                 getWeather(link);
               });
-        } else {
-            const lat = '50.43';
-            const lon = '30.51';
-            const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
-             getWeather(link, 'UA Kiev');
-            setCoords(lon, lat);
-        }
+        // } else {
+        //     const lat = '50.43';
+        //     const lon = '30.51';
+        //     const link = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=alerts,minutely&appid=${API_Key}`;
+        //     getWeather(link, 'UA Kiev');
+        //     setCoords(lon, lat);
+        // }
         // eslint-disable-next-line
     }, []);
     

@@ -4,7 +4,6 @@ import classes from './Styles/CardBlocks.module.css';
 
 
 const CardBlocks = ({days}) => {
-    console.log(days)
     const arr = ['Sunday', 'Monday', 'Tuesday', 'Wensday', 'Thursday', 'Friday', 'Saturday'];
 
     let cards = [], cls = [classes.CardBlocks, 'container'];

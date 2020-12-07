@@ -27,7 +27,7 @@ const WeatherState = ({children}) => {
             const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordsState.lat}&lon=${coordsState.lon}&units=metric&exclude=alerts,minutely&appid=${coordsState.api_key}`;
             
             const res = await axios.get(coordsState.lon && coordsState.lat ? url : link);
-            dispatch({type: GET_WEATHER, payload: res.data, city})
+            dispatch({type: GET_WEATHER, payload: res.data, city});
         } catch (e){
             dispatch({type: IS_ERROR});
         }
@@ -38,6 +38,7 @@ const WeatherState = ({children}) => {
         try{
             const cityLink = `https://api.openweathermap.org/data/2.5/weather?q=${inputState.inputValue}&units=metric&appid=${coordsState.api_key}`
             const res = await axios.get(cityLink);
+            console.log(res);
             const cityWeather = {
                 current: {
                     humidity: res.data.main.humidity,

@@ -12,8 +12,6 @@ const PopularPage = ({match}) => {
     const {popularState} = useContext(PopularContext);
     const {state} = useContext(weatherContext);
     const cityInfo = popularState.cities[match.params.name];
-    console.log(popularState);
-    console.log('cityInfo', cityInfo);
     let color = '#F1F1F1';
     let yourCityStyle = {
         textAlign: 'center',
